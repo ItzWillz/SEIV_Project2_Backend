@@ -2,7 +2,7 @@ const db = require("../SEIV_Project2_Backend/models");
 const Course = db.course;
 const Op = db.Sequelize.Op;
 
-// Create and save a new Course
+// Define the create function for courses and export it.
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.courseNum) {
@@ -12,7 +12,7 @@ exports.create = (req, res) => {
       return;
     }
 
-    // Create a Course
+  // Create a course object
   const course = {
     courseNum: req.body.courseNum,
     dept: req.body.dept,
@@ -24,7 +24,7 @@ exports.create = (req, res) => {
     // expiration_date: req.body.expiration_date
   };
 
-  // Save Course in the database
+  // Save Course in the database by creating a new Course instance and giving it the created course object which will be sequelized.
   Course.create(course)
     .then((data) => {
       res.send(data);

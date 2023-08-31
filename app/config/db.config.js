@@ -3,7 +3,7 @@ module.exports = {
     USER: 'root',
     PASSWORD: 'ooot',
     DB: 'se4p2',
-    dialect: 'mysql',   // mysql for local database, mariadb for AWS database
+    dialect: 'mysql',   // 'mysql' for local database, 'mariadb' for AWS database
     dialectOptions: {
         
     },

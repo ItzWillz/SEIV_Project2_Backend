@@ -1,7 +1,7 @@
 //require("dotenv").config();
 
 const express = require("express");
-//const cors = require("cors");
+const cors = require("cors");
 
 const app = express();
 
@@ -9,12 +9,12 @@ const db = require("../SEIV_Project2_Backend/models");
 
 db.sequelize.sync();
 
-// var corsOptions = {
-//   origin: "http://localhost:8081",
-// };
+var corsOptions = {
+   origin: "http://localhost:8080",
+};
 
-// app.use(cors(corsOptions));
-// app.options("*", cors());
+app.use(cors(corsOptions));
+app.options("*", cors());
 
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 });
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8111;
+const PORT = process.env.PORT || 8081;
 if (process.env.NODE_ENV !== "test") {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
