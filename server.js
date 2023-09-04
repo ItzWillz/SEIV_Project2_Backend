@@ -27,6 +27,8 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to the Courses application." });
 });
 
+require("../SEIV_Project2_Backend/course.routes")(app);
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8081;
 if (process.env.NODE_ENV !== "test") {
