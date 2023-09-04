@@ -1,9 +1,12 @@
 module.exports = {
     HOST: 'localhost',
     USER: 'root',
-    PASSWORD: '',
+    PASSWORD: 'ooot',
     DB: 'se4p2',
-    dialect: 'mariadb',
+    dialect: 'mysql',   // 'mysql' for local database, 'mariadb' for AWS database
+    dialectOptions: {
+        
+    },
     pool: {
         max: 5,
         min: 0,
