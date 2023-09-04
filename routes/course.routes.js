@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    const courses = require("../controllers/course.controller.js");
+    const courses = require("../SEIV_Project2_Backend/controllers/course.controller.js");
     var router = require("express").Router();
   
     // Create a new Course
