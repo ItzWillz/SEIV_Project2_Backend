@@ -1,11 +1,11 @@
-const db = require("../SEIV_Project2_Backend/models");
+const db = require("../models");
 const Course = db.course;
 const Op = db.Sequelize.Op;
 
 // Define the create function for courses and export it.
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.courseNum) {
+    if (req.body.courseNum != null) {
       res.status(400).send({
         message: "Content can not be empty!",
       });
