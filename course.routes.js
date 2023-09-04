@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    const courses = require("../controllers/course.controller.js");
+    const courses = require("../SEIV_Project2_Backend/course.controller.js");
     var router = require("express").Router();
   
     // Create a new Course
@@ -8,17 +8,17 @@ module.exports = (app) => {
     // Retrieve all Courses
     router.get("/", courses.findAll);
   
-    // Retrieve a single Courses with courseNum
-    router.get("/:courseNum", courses.findOne);
+    // // Retrieve a single Courses with courseNum
+    // router.get("/:courseNum", courses.findOne);
   
-    // Update a Course with courseNum
-    router.put("/:courseNum", courses.update);
+    // // Update a Course with courseNum
+    // router.put("/:courseNum", courses.update);
   
-    // Delete a Course with courseNum
-    router.delete("/:courseNum", courses.delete);
+    // // Delete a Course with courseNum
+    // router.delete("/:courseNum", courses.delete);
   
-    // Delete all Courses
-    router.delete("/", courses.deleteAll);
+    // // Delete all Courses
+    // router.delete("/", courses.deleteAll);
   
-    //app.use("/course-t2/courses", router);
+    app.use("/", router);
   };

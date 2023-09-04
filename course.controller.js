@@ -16,10 +16,10 @@ exports.create = (req, res) => {
   const course = {
     courseNum: req.body.courseNum,
     dept: req.body.dept,
-    level: req.body.level,
     hours: req.body.hours,
+    level: req.body.level,
     name: req.body.name,
-    desc: req.body.desc
+    //desc: req.body.desc
     // refresh_token: req.body.refresh_token,
     // expiration_date: req.body.expiration_date
   };
@@ -35,4 +35,20 @@ exports.create = (req, res) => {
       });
     });
 
+};
+
+// Define the findAll function for courses that gets all courses from the database.
+exports.findAll = (req, res) => {
+  const courseNum = req.query.courseNum;
+  var condition = courseNum ? { courseNum: { [Op.like]: `%${courseNum}%` } } : null;
+  Course.findAll({ where: condition })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials.",
+      });
+    });
 };
