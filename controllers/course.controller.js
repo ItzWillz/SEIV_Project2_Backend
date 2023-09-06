@@ -48,7 +48,37 @@ exports.findAll = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials.",
+          err.message || "Some error occurred while retrieving Courses.",
       });
     });
 };
+
+// exports.findOne = (req, res) => {
+//     const courseNum = req.query.courseNum;
+     
+// };
+
+// exports.update = (req, res) => {
+//   const courseNum = req.query.courseNum;
+//   Course.update(req.body, {
+//     where: {courseNum : courseNum},
+//   }) 
+//   .then((num) =>{
+//     if(num == 1){
+//       res.send({
+//         message: "Successful course update",
+//       });
+//     }
+//      else {
+//       res.send({
+//         message: `Cannot update course with Course Number ${courseNum}.`
+//       });
+//     }
+//   })
+//   .catch((err) => {
+//     res.status(500).send({
+//       message:
+//         err.message || "Error occured on updating Course " + courseNum,
+//     });
+//   });
+// };
