@@ -5,7 +5,7 @@ const cors = require("cors");
 
 const app = express();
 
-const db = require("../SEIV_Project2_Backend/models");
+const db = require("./models");
 
 db.sequelize.sync();
 
@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to the Courses application." });
 });
 
-require("../SEIV_Project2_Backend/course.routes")(app);
+require("./routes/course.routes.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8081;
