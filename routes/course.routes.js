@@ -12,7 +12,7 @@ module.exports = (app) => {
     router.get("/:id", courses.findOne);
   
     // // Update a Course with courseNum
-    // router.put("/:courseNum", courses.update);
+    router.put("/:id", courses.update);
   
     // // Delete a Course with courseNum
      router.delete("/:id", courses.delete);

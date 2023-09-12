@@ -74,30 +74,31 @@ exports.findOne = (req, res) => {
     });
 };
 
-// exports.update = (req, res) => {
-//   const courseNum = req.query.courseNum;
-//   Course.update(req.body, {
-//     where: {courseNum : courseNum},
-//   }) 
-//   .then((num) =>{
-//     if(num == 1){
-//       res.send({
-//         message: "Successful course update",
-//       });
-//     }
-//      else {
-//       res.send({
-//         message: `Cannot update course with Course Number ${courseNum}.`
-//       });
-//     }
-//   })
-//   .catch((err) => {
-//     res.status(500).send({
-//       message:
-//         err.message || "Error occured on updating Course " + courseNum,
-//     });
-//   });
-// };
+exports.update = (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  Course.update(req.body, {
+    where: { courseNum: id},
+  }) 
+  .then((num) =>{
+    if(num == 1){
+      res.send({
+        message: "Successful course update",
+      });
+    }
+     else {
+      res.send({
+        message: `Cannot update course with Course Number ${id}.`
+      });
+    }
+  })
+  .catch((err) => {
+    res.status(500).send({
+      message:
+        err.message || "Error occured on updating Course " + id,
+    });
+  });
+};
 
 exports.delete = (req, res) => {
   const id = req.params.id;
