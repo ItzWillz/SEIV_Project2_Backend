@@ -23,11 +23,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to the Courses application." });
-});
+// app.get("/", (req, res) => {
+//   res.json({ message: "Welcome to the Courses application." });
+// });
 
-require("./routes/course.routes.js")(app);
+// fix
+require("../SEIV_Project2_Backend/routes/course.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8081;

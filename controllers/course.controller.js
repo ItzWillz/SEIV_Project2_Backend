@@ -4,13 +4,14 @@ const Op = db.Sequelize.Op;
 
 // Define the create function for courses and export it.
 exports.create = (req, res) => {
-    // Validate request
-    if (req.body.courseNum != null) {
-      res.status(400).send({
-        message: "Content can not be empty!",
-      });
-      return;
-    }
+  // Validate request
+  console.log(req.body.courseNum)
+  if (req.body.courseNum == null) {
+    res.status(400).send({
+      message: "Content can not be empty!",
+    });
+    return;
+  }
 
   // Create a course object
   const course = {
@@ -19,7 +20,7 @@ exports.create = (req, res) => {
     hours: req.body.hours,
     level: req.body.level,
     name: req.body.name,
-    //desc: req.body.desc
+    desc: req.body.desc
     // refresh_token: req.body.refresh_token,
     // expiration_date: req.body.expiration_date
   };
@@ -53,10 +54,25 @@ exports.findAll = (req, res) => {
     });
 };
 
-// exports.findOne = (req, res) => {
-//     const courseNum = req.query.courseNum;
-     
-// };
+exports.findOne = (req, res) => {
+  const id = req.params.id;
+  console.log(req.params.id);
+  Course.findByPk(id)
+    .then((data) => {
+      if (data) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find Course with Number =${id}.`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Error retrieving Course with Number =" + id,
+      });
+    });
+};
 
 // exports.update = (req, res) => {
 //   const courseNum = req.query.courseNum;
@@ -82,3 +98,26 @@ exports.findAll = (req, res) => {
 //     });
 //   });
 // };
+
+exports.delete = (req, res) => {
+  const id = req.params.id;
+  Course.destroy({
+    where: { courseNum: id },
+  })
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          message: "Course was deleted successfully!",
+        });
+      } else {
+        res.send({
+          message: `Cannot delete Course with Number =${id}.`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Could not delete Course with Number =" + id,
+      });
+    });
+};
