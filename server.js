@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 require("./routes/course.routes")(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 3012;
+const PORT = process.env.PORT || 3012;  // Port must be 8081 to run locally because of baseURL in services.js
 if (process.env.NODE_ENV !== "test") {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
