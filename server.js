@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 // });
 
 // fix
-require("../SEIV_Project2_Backend/routes/course.routes")(app);
+require("./routes/course.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8081;
